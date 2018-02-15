@@ -28,32 +28,53 @@ Questions to be asked to interviewer to finalize the MVP for the interview
   NoSQL DBs prefer Availability over Consistency if configured that way.
   
 ### 3. ACID vs BASE
+  Atomicity, Consistency, Isolation, Durability (More for traditional SQL DBs)
+  Basically Available Soft state Eventual Consistency (Modern NoSQL DBs)
 
-### 4. Partitioning/Sharding 
+### 4. Partitioning / Sharding
+  Sharding - Splitting data across nodes/system to accomodate tons of millions of data
+  Sharding technique - Consistent Hashing
 
-### 5. Consistent Hashing
+### 6. Optimistic vs Pessimistic Locking
+  Optimistic Locking - With no locks acquired, at the time of commiting the changes, we check if no other transaction updated the records.
+  Pessimistic Locking - Acquire locks before hand and then commit the transaction.
+  
+  More on advantages/disadvantages and understanding which one to use in which scenario.
 
-### 6. Optimistic vs pessimistic locking
+### 7. Strong vs Eventual consistency
+  Strong - Reads will always see latest writes (Relational DB)
+  Eventual - Reads will see some writes and eventually in some time, it will see all the writes (NoSql can be configured either ways)
 
-### 7. Strong vs eventual consistency
-
-### 8. RelationalDB vs NoSQL
+### 8. Relational DB vs NoSQL
+  Relational DB provides nice ACID properties while NoSQL scales little better and has high availability
+  Depending on the problem we need to pick the best
 
 ### 9. Types of NoSQL
-     Key value
-     Wide column
-     Document-based
-     Graph-based
+  **Key value**
+  **Wide column**
+  **Document-based**
+  **Graph-based**
 
 ### 10. Caching
+  To speed up the request. Cache cannot be the source of truth. Cache has to be small because it stores data in-memory.
+  Caching on every node
+  Distributed cache - shared between nodes
+  
+  More on cache eviction policy
 
-### 11. Data center/racks/hosts
+### 11. Data center / Racks / Hosts
+  Data Centers have Racks which in turn have Hosts. We need to understand how these work, what is the latency between multiple racks / hosts. What happens when a host or a rack or a DC goes down?
 
-### 12. CPU/memory/Hard drives/Network bandwidth
+### 12. CPU / Memory/ Hard drives / Network bandwidth
+  We must be aware of the limitations and correspondingly improve throughput latencies and improve the system around these limited resources
 
-### 13. Random vs sequential read/writes to disk
+### 13. Random vs Sequential read/writes to disk
+  Sequential reads/writes are better for the disks
 
 ### 14. HTTP vs http2 vs WebSocket
+  HTTP - Request-Response kind of architecture between client/structure
+  HTTP2 - Improvements on the deficiencies of HTTP like multiple requests over single connection (Streams)
+  WebSocket - Fully bi-directional communication between client & server.
 
 ### 15. TCP/IP model
 
@@ -65,9 +86,9 @@ Questions to be asked to interviewer to finalize the MVP for the interview
 
 ### 19. Http & TLS
 
-### 20. Public key infrastructure and certificate authority(CA)
+### 20. Public key infrastructure and Certificate Authority(CA)
 
-### 21. Symmetric vs asymmetric encryption
+### 21. Symmetric vs Asymmetric Encryption
 
 ### 22. Load Balancer
 
@@ -79,7 +100,7 @@ Questions to be asked to interviewer to finalize the MVP for the interview
 
 ### 26. Leader election
 
-### 27. Design patterns and Object-oriented design
+### 27. Design patterns and Object-Oriented Design
 
 ### 28. Virtual machines and containers
 
@@ -87,7 +108,7 @@ Questions to be asked to interviewer to finalize the MVP for the interview
 
 ### 30. MapReduce
 
-### 31. Multithreading, locks, synchronization, CAS(compare and set)
+### 31. Multithreading, locks, synchronization, CAS (compare and set)
 
 
 # Tools
