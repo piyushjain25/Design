@@ -51,8 +51,11 @@ Questions to be asked to interviewer to finalize the MVP for the interview
 
 ### 9. Types of NoSQL
   **Key value**
+  
   **Wide column**
+  
   **Document-based**
+  
   **Graph-based**
 
 ### 10. Caching
