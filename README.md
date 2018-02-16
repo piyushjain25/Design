@@ -119,13 +119,12 @@ Questions to be asked to interviewer to finalize the MVP for the interview
 1. Cassandra
 2. MongoDB/Couchbase
 3. Mysql
-4. Memcached
-5. Redis
-6. Zookeeper
-7. Kafka
-8. NGINX
-9. HAProxy
-10. Solr, Elastic search
-11. Amazon S3
-12. Docker, Kubernetes, Mesos
-13. Hadoop/Spark and HDFS
+4. Memcached / Redis (http://blog.andolasoft.com/2014/02/memcached-vs-redis-which-one-to-pick-for-large-web-app.html)
+5. Zookeeper
+6. Kafka
+7. NGINX
+8. HAProxy
+9. Solr, Elastic search
+10. Amazon S3
+11. Docker, Kubernetes, Mesos
+12. Hadoop/Spark and HDFS
