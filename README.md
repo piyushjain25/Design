@@ -48,15 +48,30 @@ Questions to be asked to interviewer to finalize the MVP for the interview
 ### 8. Relational DB vs NoSQL
   Relational DB provides nice ACID properties while NoSQL scales little better and has high availability
   Depending on the problem we need to pick the best
+  
+  Before deciding on to use NoSQL instead of a SQL technology, you should ask yourself following questions about your use case (includes ACID test of your application) :
+  
+    * Transactions vs No transactions (Do you need atomicity?)
+      [Most NoSQL databases don’t support transactions]
+      
+    * Consistent or eventual consistent (Are you okay with eventual consistency?)
+      [Most support configurable consistency mode. You should test your scale with the consistency mode your application requires. For example, your performance test holds no good when done on “eventual consistency” mode and you decide to use hard consistency for your application.]
+      
+    * Vertical vs horizontal scaling (what’s your scale? your use case need infinite scale or needs are finite?)
+      [This sometimes boils down to what stage of business are you in. Don’t over-engineer if you are an early stage startup and growing < 5x a month. Postpone & focus on biz growth]
+      
+    * Availability (No downtime? Hot failover?)
+      [Some NoSQL DBs support hot failovers, some not.]
+      
+    * Do you really need a NoSQL DB. Why RDBMS doesn’t work for you? 
+      [Don’t use NoSQL just for the heck of it]
 
 ### 9. Types of NoSQL
-  **Key value**
-  
-  **Wide column**
-  
-  **Document-based**
-  
-  **Graph-based**
+
+  * **Key value**
+  * **Wide column** Cassandra, Hbase
+  * **Document-based** MongoDB, Couchbase
+  * **Graph-based**
 
 ### 10. Caching
   To speed up the request. Cache cannot be the source of truth. Cache has to be small because it stores data in-memory.
@@ -116,15 +131,44 @@ Questions to be asked to interviewer to finalize the MVP for the interview
 
 # Tools
 
-1. Cassandra
-2. MongoDB/Couchbase
-3. Mysql
-4. Memcached / Redis (http://blog.andolasoft.com/2014/02/memcached-vs-redis-which-one-to-pick-for-large-web-app.html)
-5. Zookeeper
-6. Kafka
-7. NGINX
-8. HAProxy
-9. Solr, Elastic search
-10. Amazon S3
-11. Docker, Kubernetes, Mesos
-12. Hadoop/Spark and HDFS
+### 1. Cassandra
+### 2. MongoDB/Couchbase
+### 3. Mysql
+### 4. Memcached / Redis / Aerospike 
+(http://blog.andolasoft.com/2014/02/memcached-vs-redis-which-one-to-pick-for-large-web-app.html)
+
+##### Memcached:
+In-memory cache
+No persistence
+TTL supported
+client-side clustering only (client stores value at multiple nodes). Horizontally scalable through client.
+Not good for large-size values/documents
+
+##### Redis:
+In-memory cache
+Disk supported – backup and rebuild from disk
+TTL supported
+Super-fast
+Data structure support in addition to key-value
+Clustering support  not mature enough yet. Vertically scalable.
+Horizontal scaling could be tricky.
+
+##### Aerospike:
+Both in-memory & on-disk
+Extremely fast (could support >1 Million TPS on a single node)
+Horizontally scalable. Server side clustering. Sharded & replicated data
+Automatic failovers
+Supports Secondary indexes.
+CAS, TTL support
+Enterprise class
+
+If I am an early stage startup, I would rather prefer to go with Redis and avoid nuances of maintaining a cluster etc. If I have scaled above half a million TPS (transactions per second) where I need to scale horizontally I would go for Aerospike. I would use memcache (memcached) only when I am going really mean and want to even offload maintaining the servers – in which case I would go for hosted version of Memcached which is Amazon Elasticache.
+
+### 5. Zookeeper
+### 6. Kafka
+### 7. NGINX
+### 8. HAProxy
+### 9. Solr, Elastic search
+### 10. Amazon S3
+### 11. Docker, Kubernetes, Mesos
+### 12. Hadoop/Spark and HDFS
